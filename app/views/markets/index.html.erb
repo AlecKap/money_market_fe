@@ -1,0 +1,46 @@
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 75%;
+  border: 2px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  border: 2px solid #ddd;
+  padding: 16px;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+
+<div style="text-align:center;">
+  <h1>Markets</h1>
+</div>
+
+<table class="center">
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Vendor Count</th>
+    <th>Click For More Info</th>
+  </tr>
+  <% @market_facade.markets.each do |market| %>
+    <tr id='market_<%= market.id %>'>
+      <td><%= market.name %></td>
+      <td><%= market.city %></td>
+      <td><%= market.state %></td>
+      <td><%= market.vendor_count %></td>
+      <td><%= button_to 'More Info', market_path(market.id), method: :get %></td>
+    </tr>
+  <% end %>
+</table>
